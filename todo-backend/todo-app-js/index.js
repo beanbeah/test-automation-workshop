@@ -32,6 +32,20 @@ app.get("/todos", async (req, res) => {
   }
 });
 
+// POST clear-completed
+app.post("/todos/clear-completed", async (req, res) => {
+  try {
+    await ToDo.destroy({
+      where: {
+        completed: true,
+      },
+    });
+    res.json({ message: "Completed Tasks Deleted" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Read (GET) a specific task by ID
 app.get("/todos/:id", async (req, res) => {
   try {

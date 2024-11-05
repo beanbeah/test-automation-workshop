@@ -1,6 +1,10 @@
 <template>
   <div class="todo-item">
-    <input type="checkbox" :checked="todo.completed" @change="toggleComplete(todo.id, !todo.completed)">
+    <input
+      type="checkbox"
+      :checked="todo.completed"
+      @change="toggleComplete(todo.id, !todo.completed)"
+    />
     <span :class="{ completed: todo.completed }">{{ todo.task }}</span>
     <button @click="editTodo(todo)">Edit</button>
     <button @click="deleteTodo(todo.id)">Delete</button>
@@ -14,16 +18,16 @@ export default {
   },
   methods: {
     toggleComplete(id, completed) {
-      this.$emit('toggle-complete', { id, completed });
+      this.$emit("toggle-complete", { id, completed });
     },
     editTodo(todo) {
-      this.$emit('edit-todo', todo);
+      this.$emit("edit-todo", todo);
     },
     deleteTodo(id) {
-      this.$emit('delete-todo', id);
-    }
-  }
-}
+      this.$emit("delete-todo", id);
+    },
+  },
+};
 </script>
 
 <style scoped>
